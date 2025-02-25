@@ -12,6 +12,12 @@ range(7, 6); // []
 
 
 // your code here
+function range(start, end) {
+  if (end <= start)
+    return []
+  
+  return [start, ...range(start + 1, end)]
+}
 
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/

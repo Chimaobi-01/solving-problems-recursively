@@ -16,6 +16,22 @@ Hint: For subsets([1, 2, 3]), there are two kinds of subsets:
 
 // your code here
 
+function subsets(array) {
+  if(array.length === 0)
+    return [[]]
+
+  let firstElement = array[0]
+  let restOfArray = array.slice(1)
+  let subsetOfRest = subsets(restOfArray)
+  let newSubsets = subsetOfRest.map(subset => [firstElement, ...subset])
+
+  return [...subsetOfRest, ...newSubsets]
+
+}
+
+console.log(subsets([1, 2]));
+
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = subsets;

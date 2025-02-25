@@ -20,11 +20,28 @@ fibonacci(10); // 55
 ***********************************************************************/
 
 // your code here
-  
+
+function fibonacci(n) {
+  let first = 0
+
+  if (n === 1) {
+
+    return 1
+  } else if (n === 2) {
+
+    return first + fibonacci(n - 1)
+  } else {
+
+    return fibonacci(n - 2) + fibonacci(n - 1)
+  }
+}
+
+
+
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = fibonacci;
 } catch (e) {
   module.exports = null;
 }
-  

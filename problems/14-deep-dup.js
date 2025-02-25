@@ -38,6 +38,31 @@ console.log(x[0] === y[0]) // true
 
 // your code here
 
+function deepDup(arr) {
+  if(arr.length === 0)
+    return 
+
+  let newarr = []
+  let firstItem = arr[0]
+  let otherItem = arr.slice(1)
+  let resultOfOtherItem
+
+  if(Array.isArray(firstItem)){
+    newarr.push(deepDup(firstItem))
+    
+  } else {
+    newarr.push(firstItem)
+  }
+
+  resultOfOtherItem = deepDup(otherItem)
+  if(resultOfOtherItem === undefined)
+    return newarr
+
+  newarr.push(...resultOfOtherItem)
+  return newarr
+}
+
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = deepDup;
