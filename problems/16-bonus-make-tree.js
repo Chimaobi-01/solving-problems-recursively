@@ -63,9 +63,35 @@ The call above should return the tree below:
 
 ***********************************************************************/
 
-const makeTree = (categories, parent) => {
-  // your code here
-};
+function makeTree(categories, parent, tree = {}) {
+  if (categories.length === 0)
+    return
+  if (parent === undefined)
+    return
+
+  const currentCategory = categories[0]
+  const otherCategory = categories.slice(1)
+
+  if (currentCategory.parent === null) {
+    tree[currentCategory.id] = {}
+    parent = tree
+
+  } else if (!parent.hasOwnProperty(currentCategory.parent)) {
+    let feedback = makeTree(categories, parent[Object.keys(parent)[0]], tree)
+    if (feedback === undefined) {
+      parent = tree
+      makeTree(categories, parent[Object.keys(parent)[0]], tree)
+    }
+
+  } else {
+    let res = parent[currentCategory.parent]
+    res[currentCategory.id] = {}
+  }
+
+  makeTree(otherCategory, parent, tree)
+  return tree
+}
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
